@@ -23,10 +23,10 @@ namespace NTL___Never_too_late
 
         private void chooseLessonButton_Click(object sender, EventArgs e)
         {
-            if (!(String.IsNullOrEmpty(this.lessonsComboBox.Text) ||
+            if (!( String.IsNullOrEmpty(this.lessonsComboBox.Text) ||
                 String.IsNullOrEmpty(this.lessonTypeComboBox2.Text) ||
                 String.IsNullOrEmpty(this.lessonTypeComboBox.Text) ||
-                String.IsNullOrEmpty(this.nickBox.Text))) 
+                String.IsNullOrEmpty(this.nickBox.Text) ))
             {
                 LessonName = this.lessonsComboBox.Text;
                 LessonType = this.lessonTypeComboBox2.Text;
@@ -47,11 +47,12 @@ namespace NTL___Never_too_late
                         this.Close();
                         break;
                 }
-            }else
+            } else
             {
                 MessageBox.Show("Uzupełnij wszystkie pola", "Ups..");
             }
 
         }
+
     }
 }

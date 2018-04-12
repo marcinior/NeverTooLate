@@ -34,8 +34,10 @@ namespace NTL___Never_too_late
 
         public bool contains(Word word)
         {
-            if (words.Contains(word)) return true;
-            else return false;
+            if (words.Contains(word))
+                return true;
+            else
+                return false;
         }
 
         public int getLength()

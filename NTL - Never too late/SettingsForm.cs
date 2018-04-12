@@ -16,7 +16,7 @@ namespace NTL___Never_too_late
         public SettingsForm()
         {
             InitializeComponent();
-            completeComboBox();         
+            completeComboBox();
         }
         private void completeComboBox()
         {
@@ -45,16 +45,15 @@ namespace NTL___Never_too_late
                 this.deleteLessonComboBox.Items.Remove(name);
                 this.chooseRecordComboBox.Items.Remove(name);
                 MessageBox.Show("Usunięto lekcję");
-            }
-            else
+            } else
             {
-                MessageBox.Show("Wybierz lekcję do usunięcia","Ups..");
+                MessageBox.Show("Wybierz lekcję do usunięcia", "Ups..");
             }
         }
 
         private void showRecords_Click(object sender, EventArgs e)
         {
-            
+
 
             if (this.chooseRecordComboBox.Text != "")
             {
@@ -69,7 +68,6 @@ namespace NTL___Never_too_late
                     int length = File.ReadAllLines(path).Count();
                     results = new string[length][];
                     counter = 0;
-
                     while (!reader.EndOfStream)
                     {
                         results[counter] = reader.ReadLine().Split(':');
@@ -77,51 +75,51 @@ namespace NTL___Never_too_late
                     }
                     reader.Close();
 
-                string statement = "";
-                int j = results.GetLength(0);
+                    string statement = "";
+                    int j = results.GetLength(0);
 
                     while (j > 0)
                     {
                         for (int i = 1; i < j; i++)
                         {
-                            Compare(ref results[i-1], ref results[i]);
+                            Compare(ref results[i - 1], ref results[i]);
                         }
                         j--;
                     }
 
-                counter = 0;
-                byte topCounter = 1;
+                    counter = 0;
+                    byte topCounter = 1;
 
-                foreach (var x in results)
-                {
-                    foreach (var y in x)
+                    foreach (var x in results)
                     {
-                        if (topCounter <= 10)
+                        foreach (var y in x)
                         {
-                            switch (counter)
+                            if (topCounter <= 10)
                             {
-                                case 0:
-                                    statement += topCounter + ". Nick: " + y;
-                                    break;
-                                case 1:
-                                    statement += " Wynik: " + y + "%";
-                                    break;
-                                case 2:
-                                    statement += " Ocena: " + y + "\n";
-                                    break;
-                            }
-                            counter++;
-                            if (counter == 3)
-                            {
-                                counter = 0;
-                                topCounter++;
+                                switch (counter)
+                                {
+                                    case 0:
+                                        statement += topCounter + ". Nick: " + y;
+                                        break;
+                                    case 1:
+                                        statement += " Wynik: " + y + "%";
+                                        break;
+                                    case 2:
+                                        statement += " Ocena: " + y + "\n";
+                                        break;
+                                }
+                                counter++;
+                                if (counter == 3)
+                                {
+                                    counter = 0;
+                                    topCounter++;
+                                }
                             }
                         }
                     }
+                    MessageBox.Show(statement, "Najlepsze wyniki");
                 }
-                MessageBox.Show(statement, "Najlepsze wyniki");
-            }
-             catch (IndexOutOfRangeException)
+                catch (IndexOutOfRangeException)
                 {
                     MessageBox.Show("Nie ma jeszcze wyników");
                 }
@@ -129,13 +127,12 @@ namespace NTL___Never_too_late
                 {
                     MessageBox.Show("Nie ma jeszcze wyników");
                 }
-            }
-            else
+            } else
             {
                 MessageBox.Show("Wybierz lekcję, aby zobaczyć wyniki", "Ups..");
             }
         }
-        public void Compare(ref string[] x,ref string[] y)
+        public void Compare(ref string[] x, ref string[] y)
         {
             int val1 = Convert.ToInt32(x[1]);
             int val2 = Convert.ToInt32(y[1]);

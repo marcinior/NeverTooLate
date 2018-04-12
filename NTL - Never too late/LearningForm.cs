@@ -34,12 +34,12 @@ namespace NTL___Never_too_late
             vocabulary.shuffle();
 
             Enum.TryParse<ChooseLessonForm.lessonType2>(ChooseLessonForm.LessonType, false, out type);
-            
+
         }
         private void getWord(object obj)
         {
-            string word="";
-            string translate="";
+            string word = "";
+            string translate = "";
             this.translateTextBox.Text = translate;
 
             switch (type)
@@ -48,7 +48,7 @@ namespace NTL___Never_too_late
                     try
                     {
                         word = vocabulary.getValue(counter).Eng.ToString();
-                        translate = vocabulary.getValue(counter).Pol.ToString();                        
+                        translate = vocabulary.getValue(counter).Pol.ToString();
                     }
                     catch (ArgumentOutOfRangeException e)
                     {
@@ -64,7 +64,7 @@ namespace NTL___Never_too_late
                     try
                     {
                         word = vocabulary.getValue(counter).Pol.ToString();
-                        translate = vocabulary.getValue(counter).Eng.ToString();                       
+                        translate = vocabulary.getValue(counter).Eng.ToString();
                     }
                     catch (ArgumentOutOfRangeException e)
                     {

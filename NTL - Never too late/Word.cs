@@ -21,26 +21,32 @@ namespace NTL___Never_too_late
             private set;
         }
 
-        public Word(string eng,string pol)
+        public Word(string eng, string pol)
         {
             this.Eng = eng;
             this.Pol = pol;
         }
 
-        public bool CheckAnswer(string answer,ChooseLessonForm.lessonType2 type){
+        public bool CheckAnswer(string answer, ChooseLessonForm.lessonType2 type)
+        {
             switch (type)
             {
                 case ChooseLessonForm.lessonType2.ANG_POL:
 
-                    if (this.Pol == answer) return true;
-                    else return false;
+                    if (this.Pol == answer)
+                        return true;
+                    else
+                        return false;
 
                 case ChooseLessonForm.lessonType2.POL_ANG:
 
-                    if (this.Eng == answer) return true;
-                    else return false;
+                    if (this.Eng == answer)
+                        return true;
+                    else
+                        return false;
 
-                default: return false;
+                default:
+                    return false;
             }
         }
         public string GetCorrectAnswer(ChooseLessonForm.lessonType2 type)
@@ -55,6 +61,6 @@ namespace NTL___Never_too_late
                     return "";
             }
         }
-        
+
     }
 }

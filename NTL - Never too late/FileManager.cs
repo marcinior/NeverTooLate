@@ -15,18 +15,18 @@ namespace NTL___Never_too_late
             string path = Directory.GetCurrentDirectory() + @"\Results\" + name + ".txt";
             File.Create(path).Close();
         }
-        public void AddToFile(string nick,double result,string mark,string path)
+        public void AddToFile(string nick, double result, string mark, string path)
         {
             string scoreData = nick + ":" + result + ":" + mark;
             using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.WriteLine(scoreData);
             }
-            
+
         }
         public bool IsExists(string path)
         {
-            bool exist = System.IO.File.Exists(path)? true : false;
+            bool exist = System.IO.File.Exists(path) ? true : false;
             return exist;
         }
         public ArrayList GetAllLines(string path)

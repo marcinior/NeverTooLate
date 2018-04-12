@@ -20,7 +20,7 @@ namespace NTL___Never_too_late
         {
             InitializeComponent();
             vocabulary = new Vocabulary();
-            
+
         }
 
         private void add_Click(object sender, EventArgs e)
@@ -29,8 +29,9 @@ namespace NTL___Never_too_late
         }
         private void englishWord_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 addWord();
             }
         }
@@ -42,8 +43,7 @@ namespace NTL___Never_too_late
             if (polWord == "" || engWord == "")
             {
                 MessageBox.Show("Uzupełnij wszystkie pola");
-            }
-            else
+            } else
             {
                 Word word = new Word(engWord, polWord);
                 vocabulary.addWord(word);

@@ -25,7 +25,7 @@ namespace NTL___Never_too_late
         }
         private void lessonName_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
                 checkName();
             }
@@ -34,9 +34,8 @@ namespace NTL___Never_too_late
         {
             if (lessonName.Text == "")
             {
-                MessageBox.Show("Wpisz nazwę lekcji","Ups..");
-            }
-            else
+                MessageBox.Show("Wpisz nazwę lekcji", "Ups..");
+            } else
             {
                 string path = @"Lessons\" + lessonName.Text + ".dat";
                 if (File.Exists(path))
@@ -45,13 +44,11 @@ namespace NTL___Never_too_late
                     if (dialogResult == DialogResult.Yes)
                     {
                         this.Close();
-                    }
-                    else if (dialogResult == DialogResult.No)
+                    } else if (dialogResult == DialogResult.No)
                     {
                         lessonName.Clear();
                     }
-                }
-                else
+                } else
                 {
                     createAddForm();
                 }

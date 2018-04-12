@@ -52,7 +52,7 @@ namespace NTL___Never_too_late
                         this.toTranslateBox.Text = currentWord;
                         this.progressBar1.Value = Convert.ToInt32(counter * 100.0 / vocabulary.getLength());
                     }
-                    catch(ArgumentOutOfRangeException e)
+                    catch (ArgumentOutOfRangeException e)
                     {
                         markTest();
                     }
@@ -78,14 +78,14 @@ namespace NTL___Never_too_late
                 correct++;
                 this.answerBox.Clear();
                 this.correctAnswerBox.Text = "";
-            }else
+            } else
             {
                 incorrect++;
                 this.correctAnswerBox.Text = vocabulary.getValue(counter).GetCorrectAnswer(type);
                 this.correctAnswerBox.ForeColor = Color.Green;
                 this.answerBox.Clear();
                 this.answerBox.Focus();
- 
+
             }
 
             correctBox.Text = correct.ToString();
@@ -94,30 +94,25 @@ namespace NTL___Never_too_late
         }
         private void markTest()
         {
-            double result = Math.Round(((Convert.ToDouble(correct) / vocabulary.getLength())*100)); 
+            double result = Math.Round(( ( Convert.ToDouble(correct) / vocabulary.getLength() ) * 100 ));
             string mark = "";
 
             if (result < 50)
             {
                 mark = "niedostateczny";
-            }
-            else if (result >= 50 && result < 60)
+            } else if (result >= 50 && result < 60)
             {
                 mark = "dopuszczający";
-            }
-            else if (result >= 60 && result < 70)
+            } else if (result >= 60 && result < 70)
             {
                 mark = "dostateczny";
-            }
-            else if (result >= 70 && result < 80)
+            } else if (result >= 70 && result < 80)
             {
                 mark = "dobry";
-            }
-            else if (result >= 80 && result < 90)
+            } else if (result >= 80 && result < 90)
             {
                 mark = "bardzo dobry";
-            }
-            else if(result >= 90)
+            } else if (result >= 90)
             {
                 mark = "celujący";
             }
@@ -129,16 +124,14 @@ namespace NTL___Never_too_late
                 FileManager manager = new FileManager();
                 if (manager.IsExists(path))
                 {
-                    manager.AddToFile(ChooseLessonForm.Nick, result, mark,path);
-                }
-                else
+                    manager.AddToFile(ChooseLessonForm.Nick, result, mark, path);
+                } else
                 {
                     manager.CreateFile(ChooseLessonForm.LessonName.ToLower());
-                    manager.AddToFile(ChooseLessonForm.Nick, result, mark,path);
+                    manager.AddToFile(ChooseLessonForm.Nick, result, mark, path);
                 }
                 this.Close();
-            }
-            else if (dialogResult == DialogResult.No)
+            } else if (dialogResult == DialogResult.No)
             {
                 this.Close();
             }
@@ -150,7 +143,7 @@ namespace NTL___Never_too_late
                 string answer = this.answerBox.Text.ToLower().TrimEnd(' ');
                 checkAnswer(answer);
                 answerBox.Focus();
-            }else
+            } else
             {
                 MessageBox.Show("Wpisz odpowiedź, aby kontynuować", "Ups..");
             }
@@ -158,7 +151,7 @@ namespace NTL___Never_too_late
             if (counter < vocabulary.getLength())
             {
                 getWord(type);
-            }else
+            } else
             {
                 markTest();
                 counter = 0;
@@ -169,8 +162,9 @@ namespace NTL___Never_too_late
 
         private void answerBox_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter)
             {
+                e.SuppressKeyPress = true;
                 checkButton_Click(sender, e);
             }
         }
